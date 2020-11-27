@@ -1,0 +1,49 @@
+template#pending-match
+  h1(style="font-size:100px").text-center Welcome, {{name}}.
+  hr
+  h1(style="font-size:75px").text-center.db-auth.d-none Finding you the perfect match!
+
+template#match
+  .p-4
+    h1.text-center(style="font-size:75px")
+      | Your match is {{name}}
+    .form-group
+      label(for='inputAddress') Address
+      #inputAddress.form-control(name="address" type='text' placeholder='1234 Main St' readonly)
+        | {{address}}
+    .form-group
+      label(for='inputAddress2') Apt/Suite/Unit
+      #inputAddress2.form-control(name="address2" type='text' placeholder='Apartment, studio, or floor' readonly)
+        | {{address2}}
+    .form-row
+      .form-group.col-md-6
+        label(for='inputCity') City
+        #inputCity.form-control(name="city" type='text' readonly)
+          | {{ city }}
+      .form-group.col-md-4
+        label(for='inputState') State
+        #inputState.form-control(name="state" readonly)
+          | {{ state }}
+      .form-group.col-md-2
+        label(for='inputZip') Zip
+        #inputZip.form-control(name="zip" type='number' readonly)
+          | {{ zip }}
+    .form-row
+      .form-group-col-md-6
+        label(for='inputShirt') T-Shirt Size
+        #inputShirt.form-control(name="shirt" readonly)
+          | {{ shirt }}
+      .form-group-col-md-6
+        label(for='inputColor') Favorite Color
+        #inputColor.form-control(name="color" type='text' readonly)
+          | {{ color }}
+    .form-row
+      .form-group.col-12
+        label(for='inputLikes') Things you like?
+        #inputLikes.form-control(name="likes" rows="5" readonly)
+          | {{ likes }}
+    .form-row
+      .form-group.col-12
+        label(for='inputDislikes') Things you don't like?
+        #inputDislikes.form-control(name="dislikes" rows="5" readonly)
+          | {{ dislikes }}
