@@ -15,34 +15,34 @@ template#match
       label(for='inputAddress2') Apt/Suite/Unit
       #inputAddress2.form-control(name="address2" type='text' placeholder='Apartment, studio, or floor' readonly)
         | {{address2}}
-    .form-row
-      .form-group.col-md-6
+    .row
+      .form-group.col-6
         label(for='inputCity') City
         #inputCity.form-control(name="city" type='text' readonly)
           | {{ city }}
-      .form-group.col-md-4
+      .form-group.col-4
         label(for='inputState') State
         #inputState.form-control(name="state" readonly)
           | {{ state }}
-      .form-group.col-md-2
+      .form-group.col-2
         label(for='inputZip') Zip
         #inputZip.form-control(name="zip" type='number' readonly)
           | {{ zip }}
-    .form-row
-      .form-group-col-md-6
+    .row
+      .col-6
         label(for='inputShirt') T-Shirt Size
         #inputShirt.form-control(name="shirt" readonly)
           | {{ shirt }}
-      .form-group-col-md-6
+      .col-6
         label(for='inputColor') Favorite Color
         #inputColor.form-control(name="color" type='text' readonly)
           | {{ color }}
-    .form-row
+    .row
       .form-group.col-12
         label(for='inputLikes') Things you like?
         #inputLikes.form-control(name="likes" rows="5" readonly)
           | {{ likes }}
-    .form-row
+    .row
       .form-group.col-12
         label(for='inputDislikes') Things you don't like?
         #inputDislikes.form-control(name="dislikes" rows="5" readonly)

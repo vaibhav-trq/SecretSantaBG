@@ -1,55 +1,57 @@
-.mx-auto.my-auto
-  h1.text-center Profile
-  form#profile
-    .form-group
-      label(for='inputName') Name
-      input#inputName.form-control(name="name" type='text' placeholder='Beta Gamma')
-    .form-group
-      label(for='inputAddress') Address
-      input#inputAddress.form-control(name="address" type='text' placeholder='1234 Main St')
-    .form-group
-      label(for='inputAddress2') Address 2
-      input#inputAddress2.form-control(name="address2" type='text' placeholder='Apartment, studio, or floor')
-    .form-row
-      .form-group.col-md-6
-        label(for='inputCity') City
-        input#inputCity.form-control(name="city" type='text')
-      .form-group.col-md-4
-        label(for='inputState') State
-        select#inputState.form-control(name="state")
-          include state.pug
-      .form-group.col-md-2
-        label(for='inputZip') Zip
-        input#inputZip.form-control(name="zip" type='number')
-    .form-row
-      .form-group-col-md-6
-        label(for='inputBudget') Budget
-        select#inputBudget.form-control(name="budget")
-          option(value='15') 0-15
-          option(value='20') 15-20
-          option(value='25') 20-25
-          option(value='30') 25-30
-          option(value='50') &#128640;
-      .form-group-col-md-6
-        label(for='inputShirt') T-Shirt Size
-        select#inputShirt.form-control(name="shirt")
-          option(value='XS') XS
-          option(value='S') S
-          option(value='M') M
-          option(value='L') L
-          option(value='XL') XL
-          option(value='XXL') XXL
-      .form-group-col-md-6
-        label(for='inputColor') Favorite Color
-        input#inputColor.form-control(name="color" type='text')
-    .form-row
-      .form-group.col-12
-        label(for='inputLikes') Things you like?
-        textarea#inputLikes.form-control(name="likes" rows="5")
-    .form-row
-      .form-group.col-12
-        label(for='inputDislikes') Things you don't like?
-        textarea#inputDislikes.form-control(name="dislikes" rows="5")
-    .form-row
-      .form-group-col-md-6
+#profileButton.m-3.d-none
+  button(type="button" class="btn btn-primary" data-toggle="modal" data-target="#profileForm") Your Profile
+
+// Modal
+#profileForm.modal.fade(tabindex="-1", role="dialog", aria-labelledby="profileForm" aria-hidden="true")
+  .modal-dialog.modal-dialog-centered.modal-lg(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLongTitle.modal-title Profile
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') ×
+      .modal-body
+        form#profile
+          .form-group
+            label(for='inputName') Name
+            input#inputName.form-control(name="name" type='text' placeholder='Beta Gamma')
+          .form-group
+            label(for='inputAddress') Address
+            input#inputAddress.form-control(name="address" type='text' placeholder='1234 Main St')
+          .form-group
+            label(for='inputAddress2') Address 2
+            input#inputAddress2.form-control(name="address2" type='text' placeholder='Apartment, studio, or floor')
+          .form-row
+            .form-group.col-md-6
+              label(for='inputCity') City
+              input#inputCity.form-control(name="city" type='text')
+            .form-group.col-md-4
+              label(for='inputState') State
+              select#inputState.form-control(name="state")
+                include state.pug
+            .form-group.col-md-2
+              label(for='inputZip') Zip
+              input#inputZip.form-control(name="zip" type='number')
+          .form-row
+            .form-group-col-md-6
+              label(for='inputShirt') T-Shirt Size
+              select#inputShirt.form-control(name="shirt")
+                option(value='XS') XS
+                option(value='S') S
+                option(value='M') M
+                option(value='L') L
+                option(value='XL') XL
+                option(value='XXL') XXL
+            .form-group-col-md-6
+              label(for='inputColor') Favorite Color
+              input#inputColor.form-control(name="color" type='text')
+          .form-row
+            .form-group.col-12
+              label(for='inputLikes') Things you like?
+              textarea#inputLikes.form-control(name="likes" rows="5")
+          .form-row
+            .form-group.col-12
+              label(for='inputDislikes') Things you don't like?
+              textarea#inputDislikes.form-control(name="dislikes" rows="5")
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
         button.btn.btn-primary(type="button" onclick="SaveOnFireBase();") Save

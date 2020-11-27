@@ -14,6 +14,7 @@ const InitFireBase = () => {
   firebase.initializeApp(firebaseConfig);
 };
 
+
 const objectifyForm = (formArray) => {
   //serialize data function
   var returnArray = {};
@@ -23,20 +24,35 @@ const objectifyForm = (formArray) => {
   return returnArray;
 }
 
+
+const LoadMatchFireBase = async (matchId) => {
+  if (matchId) {
+    const snapshot = await firebase.database().ref('preferences/' + matchId).once('value');
+    if (snapshot.val()) {
+      const target = snapshot.val();
+      var template = $("#match").html();
+      var text = Mustache.render(template, target);
+      $("#content").html(text);
+      return;
+    }
+  }
+  $(".db-auth").toggleClass("d-none");
+}
+
 const LoadFromFireBase = async (name) => {
   try {
     const snapshot = await firebase.database().ref('preferences/' + userId).once('value');
     if (snapshot.val()) {
       const target = snapshot.val();
-      if (target.match) {
-        var template = $("#match").html();
-        var text = Mustache.render(template, target);      
-        $("#content").html(text);  
-      } else {
-        $(".db-auth").toggleClass("d-none");
+      console.log("LoadFromFireBase: ");
+      console.log(target);
+      for (const [key, value] of Object.entries(target)) {
+        $("#profile").find(`[name=${key}]`).val(value);
       }
+      LoadMatchFireBase(target.match);
     } else {
       await firebase.database().ref('preferences/' + userId).set({'name': name});
+      $("#profile").find(`[name=name]`).val(name);
     }
   } catch(e) {
     console.error("LoadFromFireBase: " + e);
@@ -48,24 +64,27 @@ const SaveOnFireBase = async () => {
     console.log(data);
     try {
       await firebase.database().ref('preferences/' + userId).set(data);
+      $('#profileForm').modal('toggle')
     } catch(e) {
       console.log(e);
+      alert("Sorry something broke! Call me to get it fixed!")
     }
 };
 
-const checkLoginState = () => {
+const checkLoginState = (showError) => {
   FB.getLoginStatus(async (response) => {
     console.log(response);
     if (response.status == "connected") {
+      $("#profileButton").removeClass("d-none");
       userId = response.authResponse.userID;
       FB.api('/me', {fields: 'name'}, function(response) {
         var template = $("#pending-match").html();
-        var text = Mustache.render(template, response); 
+        var text = Mustache.render(template, response);
         $("#content").html(text);
         LoadFromFireBase(response.name);
       });
-    } else {
-      $("#content").html("Something went wrong. Are you logged into fb?");
+    } else if (showError === true) {
+      $("#content").append("Something went wrong. Are you logged into fb?");
     }
   });
 }
