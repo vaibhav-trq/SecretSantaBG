@@ -8,6 +8,9 @@ template#match
     h1.text-center(style="font-size:75px")
       | Your match is {{name}}
     .form-group
+      label(for='inputEmail') Email
+      #inputEmail.form-control(name="email" type='text' placeholder='something@gmail.com' readonly)
+    .form-group
       label(for='inputAddress') Address
       #inputAddress.form-control(name="address" type='text' placeholder='1234 Main St' readonly)
         | {{address}}
@@ -37,6 +40,16 @@ template#match
         label(for='inputColor') Favorite Color
         #inputColor.form-control(name="color" type='text' readonly)
           | {{ color }}
+    .row
+      .form-group.col-12
+        label(for='inputHobbies') Hobbies
+        #inputHobbies.form-control(name="hobbies" rows="5" readonly)
+          | {{ hobbies }}
+    .row
+      .form-group.col-12
+        label(for='inputShows') Shows / TV / Games etc.
+        #inputShows.form-control(name="shows" rows="5" readonly)
+          | {{ shows }}
     .row
       .form-group.col-12
         label(for='inputLikes') Things you like?

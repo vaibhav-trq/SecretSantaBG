@@ -15,6 +15,9 @@
             label(for='inputName') Name
             input#inputName.form-control(name="name" type='text' placeholder='Beta Gamma')
           .form-group
+            label(for='inputEmail') Email
+            input#inputEmail.form-control(name="email" type='text' placeholder='something@gmail.com')
+          .form-group
             label(for='inputAddress') Address
             input#inputAddress.form-control(name="address" type='text' placeholder='1234 Main St')
           .form-group
@@ -45,6 +48,12 @@
               label(for='inputColor') Favorite Color
               input#inputColor.form-control(name="color" type='text')
           .form-row
+            .form-group.col-12
+              label(for='inputHobbies') Hobbies
+              textarea#inputHobbies.form-control(name="hobbies" rows="5")
+            .form-group.col-12
+              label(for='inputShows') Shows / TV / Games etc.
+              textarea#inputShows.form-control(name="shows" rows="5")
             .form-group.col-12
               label(for='inputLikes') Things you like?
               textarea#inputLikes.form-control(name="likes" rows="5")
