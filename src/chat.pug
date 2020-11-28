@@ -1,0 +1,38 @@
+#chatButton.m-3.d-none
+  button(type="button" class="btn btn-primary" data-toggle="modal" data-target="#santaChatModal") Chat with your Santa
+  button(type="button" class="btn btn-primary" data-toggle="modal" data-target="#gifteeChatModal") Chat with your Giftee
+
+template#chatMessage
+  li(class="{{messageFrom}}") {{message}}
+
+// Modal
+#santaChatModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="santaChatModal" aria-hidden="true")
+  .modal-dialog.modal-dialog-centered.modal-lg(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLongTitle.modal-title Chating with your santa
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') x
+      #santaChat.modal-body
+        .row
+          .message.col-8
+            input.w-100(name="sendMessage" placeholder="Message...")
+          button.btn.btn-primary(type="button" onclick="sendMessageToSanta();") Send
+        .chat.h-75(style="overflow-y:scroll;")
+          ul
+
+#gifteeChatModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="gifteeChatModal" aria-hidden="true")
+  .modal-dialog.modal-dialog-centered.modal-lg(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLongTitle.modal-title Chating with your Giftee
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') x
+      #gifteeChat.modal-body
+        .row
+          .message.col-8
+            input.w-100(name="sendMessage" placeholder="Message...")
+          button.btn.btn-primary(type="button" onclick="sendMessageToGiftee();") Send
+        .chat.h-75(style="overflow-y:scroll;")
+          ul
+            

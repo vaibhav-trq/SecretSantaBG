@@ -53,5 +53,7 @@ matches = """1627473510777929 ==> 10225298444472538
 
 for l in matches.split('\n'):
   a, b = l.strip().split(' ==> ')
+  db.child('preferences').child(b).update({'my_santa': a})
   db.child('preferences').child(a).update({'match': b})
+  db.child('chats').child(f'{a}-{b}').push({'message': 'Say hi!','time': '', 'sender': 'system'})
   # print(a, b)
